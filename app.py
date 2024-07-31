@@ -50,7 +50,7 @@ def calculate_fv():
 
 @app.route('/solve', methods=['POST'])
 def solve():
-    equations = request.form.getlist('equations')
+    equations = request.form['equations'].split(';')
     variables = request.form['variables'].split(',')
     variables = [sp.symbols(var.strip()) for var in variables]
     eqs = [sp.sympify(eq) for eq in equations]
