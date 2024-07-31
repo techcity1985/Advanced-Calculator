@@ -52,17 +52,58 @@
             <li>Plot basic and advanced mathematical functions.</li>
             <li>Calculate Present Value (PV) and Future Value (FV).</li>
             <li>Solve simultaneous equations.</li>
-            <li>User-friendly command-line interface.</li>
+            <li>User-friendly web interface.</li>
         </ul>
         <h3>GitHub Repository</h3>
         <p>You can find the source code and detailed instructions on how to use the advanced calculator on our <a href="https://github.com/yourusername/graphing-calculator" target="_blank">GitHub repository</a>.</p>
-        <h3>How to Use</h3>
-        <p>Follow the instructions in the GitHub repository to install the necessary libraries and run the script.</p>
+        <h3>Heroku App</h3>
+        <p>You can try the Advanced Calculator live on <a href="https://advanced-calculator.herokuapp.com" target="_blank">Heroku</a>.</p>
         <div class="calculator">
             <h2 style="text-align: center; color: #fff;">Calculator Interface</h2>
-            <p style="text-align: center; color: #fff;">(This is a placeholder for the actual calculator interface)</p>
-            <!-- You can replace this section with the embedded calculator or more detailed instructions -->
-        </div>
-    </div>
-</body>
-</html>
+            <form method="POST" action="/plot">
+                <div class="form-group">
+                    <label for="function">Function to plot:</label>
+                    <input type="text" class="form-control" id="function" name="function" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Plot</button>
+            </form>
+            {% if graph %}
+            <div class="mt-4">
+                <img src="data:image/png;base64,{{ graph }}" alt="Graph">
+            </div>
+            {% endif %}
+            <form method="POST" action="/calculate_pv">
+                <h3 style="color: #fff;">Calculate Present Value (PV)</h3>
+                <div class="form-group">
+                    <label for="rate">Rate:</label>
+                    <input type="text" class="form-control" id="rate" name="rate" required>
+                </div>
+                <div class="form-group">
+                    <label for="nper">Number of periods:</label>
+                    <input type="text" class="form-control" id="nper" name="nper" required>
+                </div>
+                <div class="form-group">
+                    <label for="pmt">Payment:</label>
+                    <input type="text" class="form-control" id="pmt" name="pmt" required>
+                </div>
+                <div class="form-group">
+                    <label for="fv">Future value:</label>
+                    <input type="text" class="form-control" id="fv" name="fv" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Calculate PV</button>
+            </form>
+            <form method="POST" action="/calculate_fv">
+                <h3 style="color: #fff;">Calculate Future Value (FV)</h3>
+                <div class="form-group">
+                    <label for="rate">Rate:</label>
+                    <input type="text" class="form-control" id="rate" name="rate" required>
+                </div>
+                <div class="form-group">
+                    <label for="nper">Number of periods:</label>
+                    <input type="text" class="form-control" id="nper" name="nper" required>
+                </div>
+                <div class="form-group">
+                    <label for="pmt">Payment:</label>
+                    <input type="text" class="form-control" id="pmt" name="pmt" required>
+                </div>
+                <div class="form
