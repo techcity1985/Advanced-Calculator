@@ -1,1 +1,1 @@
-web: python advanced_calculator.py
+web: python app.py
